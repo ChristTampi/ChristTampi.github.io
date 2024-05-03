@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validasi Angka</title>
+<style>
+  /* Style untuk body */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+  }
+
+  /* Style untuk header */
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Style untuk menu */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Tengah */
+  }
+
+  nav ul li {
+    margin-right: 50px;
+  }
+
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+
+  /* Style untuk dropdown menu */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Style untuk container */
+  .container {
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Menyembunyikan overflow */
+  }
+
+  /* Style untuk gambar blur */
+  .blur {
+    background-image: url('file:///C:/Users/USER/Documents/Semester%204/OTOMATA/gambarweb1.JPG');
+    background-size: cover; /* Mengatur agar gambar latar belakang menjadi full */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+  /* Style untuk kotak input */
+  input {
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Style untuk pesan validasi */
+  #message {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Christian Tampi</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Home Page</a></li>
+      <li class="dropdown">
+        <a href="#">Menu</a>
+        <div class="dropdown-content">
+          <a href="#">Identifikasi Angka</a>
+          <a href="#">Identifikasi Huruf</a>
+        </div>
+      </li>
+      <li><a href="#">About Us</a></li> <!-- Menu About Us -->
+    </ul>
+  </nav>
+</header>
+<div class="blur"></div>
+<div class="container">
+  <!-- Kotak input untuk memasukkan angka -->
+  <label for="input">Masukkan Angka:</label>
+  <input type="text" id="input" placeholder="Masukkan angka...">
+  <!-- Pesan validasi -->
+  <div id="message"></div>
+</div>
+<script>
+  const input = document.getElementById('input');
+  const message = document.getElementById('message');
+
+  input.addEventListener('input', function() {
+    const value = input.value.trim();
+    
+    if (value === '') {
+      message.textContent = 'Belum ada data';
+      message.style.color = 'gray';
+    } else if (isNaN(value)) {
+      message.textContent = 'Tidak Valid: Input harus berupa angka.';
+      message.style.color = 'red';
+    } else {
+      message.textContent = 'Valid: Input adalah angka.';
+      message.style.color = 'green';
+    }
+  });
+</script>
+</body>
+</html>
